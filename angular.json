@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mca-leadgen-analytical-ui"
+    }
+  },
+  "defaultProject": "mca-leadgen-analytical-ui",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,0 +1,42 @@
+<!--toggle-->
+<div>
+    <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Tables</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem (click)="Table1()">Table 1</button>
+        <button ngbDropdownItem (click)="Table2()">Table 2</button>
+
+      </div>
+</div>
+<!--text-->
+<div>
+  <div class="test">
+    {{text}}
+  </div>
+</div>
+<!--image-->
+<div>
+  <img [src]="imageToShow" class="my_image">
+</div>
+<!--Table-->
+<div class="my_table">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Header 1</th>
+      <th scope="col">Header 2</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let line of tableData; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td *ngFor="let data of line">
+            {{data}}
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
