@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { config, S3 } from 'aws-sdk';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -12,11 +12,29 @@ export class MainPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.setText("test");
+    this.Table1();
+    this.getS3('data/2021_06_29/qualification_success_rate_by_region.csv');
 
+  }
+  public getS3(key) {
+    config.update({
+      accessKeyId: "AKIA4J6QPG3CTOIA3V7I",
+      secretAccessKey: "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",
+      region: "us-east-1"
+      }
+    );
 
-
-    this.Table1()
+    let s3 = new S3()
+    var getParams = {
+      Bucket: 'mca-leadgen-analytical', // your bucket name,
+      Key: key // path to the object you're looking for
+      }
+    s3.getObject(getParams, function(err, data) {
+    // Handle any error and exit
+    console.log(data)
+    if (err)
+        return err;
+    });
   }
   public Table1():void {
     this.setText("Table 1");
